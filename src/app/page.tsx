@@ -1,15 +1,13 @@
 'use client'
 
-import { useEffect } from "react";
-import { connectDb } from "./dbConnector/connectDb";
+import { uploadUserDetails } from "./utils/uploadUserDetails";
 
 export default function App() {
 
-  useEffect(() => {
-    connectDb();
-  }, [])
-
   return (
-    <h1>Connecting Next App with MongoDB</h1>
+    <>
+      <h1>Connecting Next App with MongoDB</h1>
+      <button onClick={uploadUserDetails}>Upload User Details</button>
+    </>
   );
 }
