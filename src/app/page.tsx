@@ -1,13 +1,27 @@
 'use client'
 
-import { uploadUserDetails } from "./utils/uploadUserDetails";
+import { useState } from "react";
+import { searchUsers, uploadUserDetails, uploadUsers } from "./utils/uploadUserDetails";
 
 export default function App() {
+  const [userId, setUserId] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <>
-      <h1>Connecting Next App with MongoDB</h1>
-      <button onClick={uploadUserDetails}>Upload User Details</button>
+      <input
+        placeholder="Enter ID"
+        value={userId}
+        onChange={(e) => setUserId(e.target.value)}
+      />
+      <button onClick={() => uploadUserDetails(userId)}>Upload User</button>
+      <button onClick={uploadUsers}>Upload Many</button>
+      <input
+        placeholder="Search Users"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <button onClick={() => searchUsers(searchQuery)}>Search Users</button>
     </>
   );
 }
