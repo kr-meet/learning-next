@@ -14,8 +14,6 @@ export async function POST() {
         users.push({id : "user"+i});
     }
 
-    // console.log(users);
-
     try {
         await User.insertMany(users, { ordered: false });
         return NextResponse.json("Users uploaded successfully");

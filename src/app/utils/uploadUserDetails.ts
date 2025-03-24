@@ -1,10 +1,14 @@
-export const uploadUserDetails = async (userId: string) => {
+export const uploadUserDetails = async (userId: string, profile: File | undefined) => {
     console.log("Uploading user details...");
+
+    const formData = new FormData();
+    formData.append('id', userId);
+    if(profile) formData.append('profilePhoto', profile);
 
     try {
         const response = await fetch('/api/upload-user', {
             method: 'POST',
-            body: JSON.stringify({ userId: userId }),
+            body: formData,
         });
         
         const data = await response.json();
